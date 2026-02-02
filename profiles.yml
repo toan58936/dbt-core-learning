@@ -1,0 +1,12 @@
+dbt_demo: # Tên này phải trùng khớp với khai báo trong dbt_project.yml
+  outputs:
+    dev:
+      type: postgres
+      host: ep-dry-band-a1tm4fjw-pooler.ap-southeast-1.aws.neon.tech
+      user: neondb_owner
+      password: npg_AJ4CMN3cjqsL
+      port: 5432
+      dbname: neondb
+      schema: dbt_learning
+      threads: 4
+  target: dev # Chỉ định dbt sử dụng cấu hình 'dev' ở trên

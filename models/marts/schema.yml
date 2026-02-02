@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: mart_networks_per_country
+    description: "Bảng tổng hợp số lượng trạm theo quốc gia"
+    columns:
+      - name: country_code
+        tests:
+          - not_null
+          # Test này kiểm tra: Mọi mã quốc gia trong bảng Networks 
+          # PHẢI CÓ MẶT trong bảng Country Codes. 
+          # Nếu bảng Networks có mã 'XX' mà bảng Seed không có -> Báo lỗi ngay.
+          - relationships:
+              to: ref('country_codes')
+              field: code
+
+      - name: total_networks
+        tests:
+          - not_null
